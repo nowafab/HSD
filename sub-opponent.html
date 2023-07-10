@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Connecting to an Opponent</title>
+  <style>
+    body {
+      background-color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column; /* Added flex-direction to stack elements vertically */
+      position: relative; /* Added position property to enable positioning of the image */
+    }
+    
+    .text {
+      font-size: 24px;
+      font-weight: bold;
+      position: relative; /* Added position property to enable z-index */
+      z-index: 2; /* Set a higher z-index value to place it above the image */
+    }
+    
+    .image {
+      position: absolute; /* Position the image */
+      top: 40%; /* Position the image at the vertical center */
+      left: 50%; /* Position the image at the horizontal center */
+      transform: translate(-50%, -50%); /* Center the image precisely */
+      z-index: 1; /* Set a lower z-index value to place it below the text */
+    }
+    
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="image" src="images/image3.gif" alt="Image 3"> <!-- Added the image element -->
+    <div class="text" id="connectingText">Connecting to an Opponent</div>
+  </div>
+  
+  <script>
+    const connectingText = document.getElementById("connectingText");
+
+    function animateText() {
+      connectingText.innerText = "Connecting to an Opponent";
+      setTimeout(() => {
+        connectingText.innerText = "Connecting to an Opponent.";
+      }, 1000);
+      setTimeout(() => {
+        connectingText.innerText = "Connecting to an Opponent..";
+      }, 2000);
+      setTimeout(() => {
+        connectingText.innerText = "Connecting to an Opponent...";
+      }, 3000);
+      setTimeout(animateText, 4000); // Add this line to create a loop
+    }
+
+    animateText();
+
+    const randomDelay = getRandomDelay(3000, 12000);
+    setTimeout(() => {
+      window.location.href = "gamepage.html";
+    }, randomDelay);
+
+    function getRandomDelay(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
